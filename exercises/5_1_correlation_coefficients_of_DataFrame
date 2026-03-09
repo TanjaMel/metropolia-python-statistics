@@ -1,0 +1,16 @@
+import pandas as pd
+file = input()
+df = pd.read_csv(file)
+
+print(file)
+
+species_list = df["Species"].unique()
+
+for species in species_list:
+    species = "Iris-setosa"
+    print(f"{species} correlation matrix")
+    sub_df = df[df["Species"] == species]
+    numeric_cols = sub_df.select_dtypes(include="number")
+    corr_matrix = numeric_cols.corr(method="pearson")
+    print(corr_matrix)
+    print()

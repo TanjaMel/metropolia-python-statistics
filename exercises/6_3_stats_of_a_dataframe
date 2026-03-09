@@ -1,0 +1,12 @@
+import pandas as pd
+file = input()
+df = pd.read_csv(file, index_col='Id')
+
+df_described = df.describe()
+
+stats = df.groupby("Species").agg(["mean", "var", "std"])
+
+print('Described DataFrame:')
+print(df_described)
+print('Species stats:')
+print(stats)
